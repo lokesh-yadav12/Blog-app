@@ -11,11 +11,12 @@ import {
   TableRow,
 } from "../ui/table";
 import Link from "next/link";
-import   {prisma}  from "@/lib/prisma";
+//import   {prisma}  from "@/lib/prisma";
 import { deleteArticle } from "@/actions/delete-article";
+import { Prisma } from "@prisma/client";
  
 type RecentArticlesProps = {
-  articles: prisma.ArticlesGetPayload<{
+  articles: Prisma.ArticlesGetPayload<{
     include: {
       comments: true;
       author: {

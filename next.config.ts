@@ -1,16 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // images:{
-  //   remotePatterns[
-  //     {
-  //       protocol:"https",
-  //       hostname:"images.unsplash.com",
-
-  //     }
-  //   ]
-  // }
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com", // Cloudinary
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com", // Unsplash
+      },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com", // Clerk profile avatars
+      },
+    ],
+  },
 };
 
 export default nextConfig;

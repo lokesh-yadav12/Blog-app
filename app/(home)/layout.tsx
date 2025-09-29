@@ -13,10 +13,12 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
         clerkUserId: user.id,
         email: user.emailAddresses[0].emailAddress,
         imageUrl: user.imageUrl,
+        name: user.firstName || "No Name", // ✅ Provide a string
       },
       update: {
         email: user.emailAddresses[0].emailAddress,
         imageUrl: user.imageUrl,
+        name: user.firstName || "No Name", // optional: update name
       },
     });
   }

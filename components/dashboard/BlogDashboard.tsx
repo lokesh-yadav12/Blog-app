@@ -28,15 +28,17 @@ export async function BlogDashboard() {
   return (
     <main className="flex-1 p-4 md:p-8">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Blog Dashboard</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground">
+            Blog Dashboard
+          </h1>
+          <p className="text-sm md:text-base text-muted-foreground">
             Manage your content and analytics
           </p>
         </div>
-        <Link href={"/dashboard/articles/create"}>
-          <Button className="gap-2">
+        <Link href={"/dashboard/articles/create"} className="w-full md:w-auto">
+          <Button className="w-full md:w-auto gap-2">
             <PlusCircle className="h-4 w-4" />
             New Article
           </Button>
@@ -44,7 +46,7 @@ export async function BlogDashboard() {
       </div>
 
       {/* Quick Stats */}
-      <div className="grid gap-4 md:grid-cols-3 mb-8">
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -53,7 +55,7 @@ export async function BlogDashboard() {
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{articles.length}</div> 
+            <div className="text-xl md:text-2xl font-bold">{articles.length}</div>
             <p className="text-xs text-muted-foreground mt-1">
               +5 from last month
             </p>
@@ -68,7 +70,7 @@ export async function BlogDashboard() {
             <MessageCircle className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{totalComments}</div>
+            <div className="text-xl md:text-2xl font-bold">{totalComments}</div>
             <p className="text-xs text-muted-foreground mt-1">
               12 awaiting moderation
             </p>
@@ -83,7 +85,7 @@ export async function BlogDashboard() {
             <Clock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">4.2m</div>
+            <div className="text-xl md:text-2xl font-bold">4.2m</div>
             <p className="text-xs text-muted-foreground mt-1">
               +0.8m from last month
             </p>

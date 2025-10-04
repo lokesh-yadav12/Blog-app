@@ -1,18 +1,14 @@
-//import { ArticleDetailPage } from "@/components/articles/article-detail-page";
-import { ArticleDetailPage } from "@/components/articles/article-detail-page";
+import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import React from "react";
+import { ArticleDetailPage } from "@/components/articles/article-detail-page";
 
-type ArticleDetailPageProps = {
-  params: Promise<{ id: string }>;
+type Props = {
+  params: { id: string };
 };
 
-const page: React.FC<ArticleDetailPageProps> = async ({ params }) => {
-  const id = (await params).id;
+export default async function ArticlePage({ params }: Props) {
   const article = await prisma.articles.findUnique({
-    where: {
-      id,
-    },
+    where: { id: params.id },
     include: {
       author: {
         select: {
@@ -23,14 +19,10 @@ const page: React.FC<ArticleDetailPageProps> = async ({ params }) => {
       },
     },
   });
-  if (!article) {
-    return <h1>Article not found.</h1>;
-  }
-  return (
-    <div>
-      <ArticleDetailPage article={article} /> 
-    </div>
-  );
-};
 
-export default page;
+  if (!article) {
+    notFound();
+  }
+
+  return <ArticleDetailPage article={article} />;
+}

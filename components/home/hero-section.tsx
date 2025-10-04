@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
 const HeroSection = () => {
   return (
     <section className='relative min-h-[600px] w-full overflow-hidden bg-gradient-to-br from-purple-600 via-indigo-950 to-indigo-950 '>
@@ -17,8 +18,12 @@ const HeroSection = () => {
                 <p className='mx-auto max-w-2xl text-lg text-gray-300 md:text-xl'>Discover insightful articles, through-provoking stories,and expert prespective on technology, lifestyle and innovation. </p>
            
                 <div className='flex flex-col gap-4 items-center sm:flex-row md:justify-start'>
-                    <Button className='rounded-full '>Start Reading</Button>
-                    <Button className='rounded-full' variant={"outline"} >Explore Topics</Button>
+                    <Link href="/articles">
+                        <Button className='rounded-full cursor-pointer'>Start Reading</Button>
+                    </Link>
+                    <Link href="/tutorials">
+                        <Button className='rounded-full cursor-pointer' variant={"outline"}>Explore Topics</Button>
+                    </Link>
                 </div>
                 <div className='grid grid-cols-3 gap-4 pt-8 txt-white md:mx-w-md'>
 

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Trash2, Check, X } from "lucide-react";
+import { MessageCircle, Trash2} from "lucide-react";
 import { deleteComment } from "@/actions/delete-comment";
 
 export default async function DashboardCommentsPage() {

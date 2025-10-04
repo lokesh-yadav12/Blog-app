@@ -45,3 +45,4 @@ export async function deleteComment(commentId: string) {
   revalidatePath(`/articles/${comment.articleId}`);
   revalidatePath("/dashboard/comments");
 }
+

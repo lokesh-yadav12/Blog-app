@@ -201,7 +201,8 @@ export default async function DashboardSettingsPage() {
                 <Calendar className="h-4 w-4 text-muted-foreground" />
                 <span className="text-muted-foreground">Joined</span>
                 <span className="ml-auto text-sm">
-                  {user.createdAt?.toLocaleDateString() || "Unknown"}
+                 {(user as any)?.createdAt ? new Date((user as any).createdAt).getFullYear() : "N/A"}
+
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm">

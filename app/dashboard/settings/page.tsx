@@ -124,13 +124,15 @@ export default async function DashboardSettingsPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold">
-                    {user.createdAt ? new Date(user.createdAt).getFullYear() : "N/A"}
+                    {(user as any)?.createdAt ? new Date((user as any).createdAt).getFullYear() : "N/A"}
+
                   </div>
                   <div className="text-sm text-muted-foreground">Member Since</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold">
-                    {user.createdAt ? Math.floor((Date.now() - new Date(user.createdAt).getTime()) / (1000 * 60 * 60 * 24)) : 0}
+                    {(user as any)?.createdAt ? new Date((user as any).createdAt).getFullYear() : "N/A"}
+
                   </div>
                   <div className="text-sm text-muted-foreground">Days Active</div>
                 </div>

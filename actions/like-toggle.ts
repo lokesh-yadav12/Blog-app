@@ -1,27 +1,39 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-export async function toggleLike(articleId : string) {
+export async function toggleLike(articleId: string) {
   const { userId } = await auth(); // Clerk's user ID
-  if (!userId) throw new Error("You must be logged in to like an article");
-  
 
+  // If not logged in, just skip without throwing server error
+  if (!userId) {
+    console.warn("Unauthorized like attempt");
+    return { success: false, message: "Please log in to like an article." };
+  }
 
-  // Ensure the user exists in the database
-  const user = await prisma.user.findUnique({
+  // Check if the user exists in the database
+  let user = await prisma.user.findUnique({
     where: { clerkUserId: userId },
   });
 
+  // If not found, auto-create the user from Clerk data
   if (!user) {
-    throw new Error("User does not exist in the database.");
+    const clerkUser = await currentUser();
+    user = await prisma.user.create({
+      data: {
+        clerkUserId: userId,
+        name: clerkUser?.firstName || "Unknown User",
+        email: clerkUser?.emailAddresses?.[0]?.emailAddress || "",
+        imageUrl: clerkUser?.imageUrl || "",
+      },
+    });
   }
 
   // Check if the user has already liked the article
   const existingLike = await prisma.like.findFirst({
-    where: { articleId, userId: user.id }, // Use `user.id`, not `clerkUserId`
+    where: { articleId, userId: user.id },
   });
 
   if (existingLike) {
@@ -36,6 +48,8 @@ export async function toggleLike(articleId : string) {
     });
   }
 
-  // Return updated like count
-  revalidatePath(`/articles/${articleId}`)
+  // Revalidate the article page for updated likes
+  revalidatePath(`/articles/${articleId}`);
+
+  return { success: true };
 }

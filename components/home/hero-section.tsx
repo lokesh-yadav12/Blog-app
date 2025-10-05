@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import Image from "next/image";
+
 const HeroSection = () => {
   return (
     <section className='relative min-h-[600px] w-full overflow-hidden bg-gradient-to-br from-purple-600 via-indigo-950 to-indigo-950 '>
@@ -47,7 +47,7 @@ const HeroSection = () => {
                 {/* Image frame */}
                 <div className='mt-12 flex-1 md:mt-0'>
                     <div className={cn("relative mx-auto w-64 h-64 rounded-2xl overflow-hidden", "bg-gradient-to-br from-white/5 to-transparent", "border border-primary/20 backdrop:blur-lg","shadow-2xl shadow-indigo-500/10")}> 
-                    <Image src="https://tse3.mm.bing.net/th/id/OIP.pZ2mAOsVqYcwKOfcsOkmHgHaLG?rs=1&pid=ImgDetMain&o=7&rm=3" alt="hero-image" className='object-cover' />
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.pZ2mAOsVqYcwKOfcsOkmHgHaLG?rs=1&pid=ImgDetMain&o=7&rm=3" alt="hero-image" className='object-cover' />
                     </div>
                 </div>
 

@@ -16,6 +16,7 @@ model User {
   role        String?
   articles    Articles[]
   comments    Comment[]
+  createdAt  DateTime @default(now())
   likes       Like[] // A user can like multiple articles
 }
 

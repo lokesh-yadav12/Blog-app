@@ -4,6 +4,36 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { BarChart, TrendingUp, Eye, MessageCircle, Heart, FileText } from "lucide-react";
 
+// Explicit types for Prisma objects
+type Comment = {
+  id: string;
+  createdAt: Date;
+  // Add other fields if needed
+};
+
+type Like = {
+  id: string;
+  createdAt: Date;
+  // Add other fields if needed
+};
+
+type Article = {
+  id: string;
+  title: string;
+  createdAt: Date;
+  comments: Comment[];
+  likes: Like[];
+  engagementScore?: number;
+  // Add other fields if needed
+};
+
+type User = {
+  id: string;
+  clerkUserId: string;
+  articles: Article[];
+  // Add other fields if needed
+};
+
 export default async function DashboardAnalyticsPage() {
   const { userId } = await auth();
   
@@ -30,7 +60,7 @@ export default async function DashboardAnalyticsPage() {
         },
       },
     },
-  });
+  }) as User | null;
 
   if (!user) {
     return (
@@ -56,7 +86,7 @@ export default async function DashboardAnalyticsPage() {
       ...article,
       engagementScore: article.comments.length + article.likes.length,
     }))
-    .sort((a, b) => b.engagementScore - a.engagementScore)
+    .sort((a, b) => (b.engagementScore ?? 0) - (a.engagementScore ?? 0))
     .slice(0, 5);
 
   // Get recent activity (last 7 days)
@@ -228,4 +258,3 @@ export default async function DashboardAnalyticsPage() {
     </main>
   );
 }
-

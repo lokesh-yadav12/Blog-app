@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BarChart, TrendingUp, Eye, MessageCircle, Heart, FileText } from "lucide-react";
+import { BarChart, TrendingUp, MessageCircle, Heart, FileText } from "lucide-react";
 
 // Explicit types for Prisma objects
 type Comment = {

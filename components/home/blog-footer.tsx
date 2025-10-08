@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
-import { Linkedin, Github, Twitter } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter } from "lucide-react";
+import Link from "next/link";
 
 export function BlogFooter() {
   return (
@@ -24,15 +24,35 @@ export function BlogFooter() {
 
             {/* Social Links */}
             <div className="mt-6 flex gap-2">
-              <Button variant="ghost" size="icon" aria-label="Twitter">
-                <Twitter className="h-5 w-5 text-muted-foreground" />
-              </Button>
-              <Button variant="ghost" size="icon" aria-label="Github">
-                <Github className="h-5 w-5 text-muted-foreground" />
-              </Button>
-              <Button variant="ghost" size="icon" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5 text-muted-foreground" />
-              </Button>
+              <Link
+                href="https://twitter.com/yourusername"
+                target="_blank"
+                aria-label="Twitter"
+              >
+                <Button variant="ghost" size="icon">
+                  <Twitter className="h-5 w-5 text-muted-foreground" />
+                </Button>
+              </Link>
+
+              <Link
+                href="https://github.com/lokesh-yadav12"
+                target="_blank"
+                aria-label="Github"
+              >
+                <Button variant="ghost" size="icon">
+                  <Github className="h-5 w-5 text-muted-foreground" />
+                </Button>
+              </Link>
+
+              <Link
+                href="https://www.linkedin.com/in/lokesh-kumar-0a7522271/"
+                target="_blank"
+                aria-label="LinkedIn"
+              >
+                <Button variant="ghost" size="icon">
+                  <Linkedin className="h-5 w-5 text-muted-foreground" />
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -40,10 +60,38 @@ export function BlogFooter() {
           <div>
             <h3 className="text-lg font-semibold text-foreground">Explore</h3>
             <ul className="mt-4 space-y-3 text-sm sm:text-base">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">All Articles</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Topics</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Authors</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Podcasts</a></li>
+              <li>
+                <Link
+                  href="/articles"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  All Articles
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Topics
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Authors
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Podcasts
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -51,16 +99,46 @@ export function BlogFooter() {
           <div>
             <h3 className="text-lg font-semibold text-foreground">Legal</h3>
             <ul className="mt-4 space-y-3 text-sm sm:text-base">
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Licenses</a></li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Licenses
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <h3 className="text-lg font-semibold text-foreground">Stay Updated</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              Stay Updated
+            </h3>
             <form className="mt-4 flex flex-col gap-4">
               <div className="relative">
                 <Input
@@ -70,10 +148,7 @@ export function BlogFooter() {
                 />
                 <Mail className="h-5 w-5 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
               </div>
-              <Button
-                type="submit"
-                className="w-full sm:w-auto sm:self-start"
-              >
+              <Button type="submit" className="w-full sm:w-auto sm:self-start">
                 Subscribe
               </Button>
             </form>
